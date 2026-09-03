@@ -7,6 +7,12 @@
   "main_run_matches_previous": true,
   "unresolved_citations": false,
   "overfull_boxes": false,
-  "visual_review": "all pages at thumbnail scale; selected high-risk pages at reading scale",
-  "workbook_sheets": 11
+  "visual_review": "Revised title page inspected at reading scale; rendered pages 2-38 are pixel-identical to the prior report.",
+  "workbook_sheets": 11,
+  "repository_link": "https://github.com/AndersH3/IQ-test-differences",
+  "repository_link_page": 1,
+  "repository_link_annotation_verified": true,
+  "unchanged_text_and_rendered_pages": "2-38",
+  "simulations_rerun_for_this_edit": false,
+  "report_sha256": "dbef93c399230a8a90be8f75e5825e62e3dbbfa41fb32727e778751718554afd"
 }

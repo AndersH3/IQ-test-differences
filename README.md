@@ -46,12 +46,12 @@ sensitivity analyses, and limits on their application to actual tests.
 | `iq_report/qa/` | Retained report/workbook previews and validation records |
 | `validation/edge_cases/` | Recorded checks for identical, independent, two-test, and ten-test cases |
 | `report-source.md`, `source-ledger.md` | Original assembly snapshot and research provenance notes |
-| `iq_test_differences_source_package.zip` | Original delivered source package |
+| `iq_test_differences_source_package.zip` | Source package matching the current report |
 | `PROJECT_MANIFEST.sha256` | Checksums of the complete project snapshot |
 
-The report directory and original delivered files retain their original contents
-and relative paths. Some files intentionally duplicate earlier deliverables to
-preserve those snapshots. `report-source.md` contains the original TeX body
+The report PDF, editable sources, and source package are kept in sync; earlier
+versions remain available in Git history. Some files intentionally duplicate
+earlier deliverables to preserve those snapshots. `report-source.md` contains the original TeX body
 despite its filename. The ledger retains working retrieval references; the
 bibliography supplies the source URLs.
 
@@ -120,7 +120,7 @@ From the repository root:
 sha256sum -c PROJECT_MANIFEST.sha256
 ```
 
-The original report package also has its own `iq_report/MANIFEST.sha256`.
+The report package also has its own `iq_report/MANIFEST.sha256`.
 Checksums describe the saved snapshot; intentional edits or regenerated output
 will change them.
 
