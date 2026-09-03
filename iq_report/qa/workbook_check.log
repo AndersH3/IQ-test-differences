@@ -1,0 +1,4 @@
+{"kind":"table","sheet":"Model","address":"A1:C9","rows":9,"cols":3,"values":[["Quantity","Value","Meaning / units"],["Population mean",100,"IQ points; assumed"],["Common SD",15,"IQ points; assumed"],["Every pair correlation",0.6,"Population parameter; assumed"],["Number of tests",5,"Five-test closed form below"],["Expected maximum of 5 iid N(0,1)",1.1629644736405198,"Exact inverse-trigonometric formula"],["Expected absolute pair gap",10.704744696916626,"IQ points; jointly normal model"],["Expected five-test range",22.065699447377362,"IQ points; jointly normal model"],["Difference SD / RMS",13.416407864998737,"IQ points; equal means"]]}
+{"kind":"notice","message":"Cell search matched 0 entries."}
+Inspect result written to file: /workspace/scratch/7beec1facbc5/iq_report/outputs/7beec1facbc5/iq_report_data.xlsx.inspect.ndjson
+Saved iq_report_data.xlsx

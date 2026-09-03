@@ -1,0 +1,98 @@
+IQ TEST DIFFERENCES AND RANGES
+==============================
+
+People per model: 2000; tests per person: 2; seed: 20260903; batch: 100000
+Marginal mean: 100; marginal SD: 15; every pair correlation: 0.6
+
+MODEL ASSUMPTIONS
+The main results assume an equicorrelated JOINT normal distribution.
+Each row is one person; independent rows define the averaging population.
+Scores are continuous and unrounded. Correlation is a population parameter,
+not the exact empirical correlation in the simulated finite sample.
+
+DETERMINISTIC NUMERICAL CHECKS
+E(max of 2 independent standard normals): 0.564189583548
+Quadrature estimated absolute error: 1.83e-12
+E(max of 5), exact closed form: 1.162964473641
+Closed form minus quadrature: 0
+All deterministic checks passed.
+
+JOINT NORMAL MODEL
+            quantity      theory  simulation       mc_se     mc_95_low    mc_95_high error_in_mc_se
+   signed_difference   0.0000000   0.3300543 0.301156643  -0.260201873   0.920310473    1.095955570
+ absolute_difference  10.7047447  10.6593126 0.184149197  10.298386782  11.020238370   -0.246713652
+  squared_difference 180.0000000 181.4088873 6.000065222 169.648975592 193.168799073    0.234812003
+          test_range  10.7047447  10.6593126 0.184149197  10.298386782  11.020238370   -0.246713652
+       highest_score 105.3523723 105.1378136 0.310033341 104.530159396 105.745467762   -0.692050630
+        lowest_score  94.6476277  94.4785010 0.316178795  93.858801953  95.098200054   -0.534908258
+Monte Carlo check: every nondegenerate mean is within 6 MC SE of theory. 
+
+Empirical test means:
+[1] 99.973184 99.643130
+Empirical test SDs:
+[1] 15.162628 14.800626
+Empirical correlation matrix:
+         [,1]     [,2]
+[1,] 1.000000 0.596153
+[2,] 0.596153 1.000000
+
+INDIVIDUAL QUANTILES UNDER THE JOINT NORMAL MODEL
+ probability absolute_difference  test_range
+       0.025          0.42044315  0.42044315
+       0.500          9.04922959  9.04923071
+       0.975         30.07157318 30.07157319
+These are distribution quantiles, NOT confidence intervals for the mean.
+
+COUNTEREXAMPLE: NORMAL MARGINALS, SAME CORRELATIONS, NON-NORMAL JOINT LAW
+With probability rho all k scores equal one shared normal draw.
+Otherwise all k scores are independent normal draws.
+This is a non-identifiability demonstration, not a realistic test model.
+            quantity      theory    simulation        mc_se    mc_95_low   mc_95_high error_in_mc_se
+   signed_difference   0.0000000   0.820452039  0.303361890   0.22587366   1.41503042    2.704532329
+ absolute_difference   6.7702750   6.706085087  0.264325819   6.18801600   7.22415417   -0.242843911
+  squared_difference 180.0000000 184.637985886 10.911907148 163.25104087 206.02493090    0.425038980
+          test_range   6.7702750   6.706085087  0.264325819   6.18801600   7.22415417   -0.242843911
+       highest_score 103.3851375 102.969674889  0.327246886 102.32828278 103.61106700   -1.269569338
+        lowest_score  96.6148625  96.263589802  0.328163541  95.62040108  96.90677852   -1.070419631
+Monte Carlo check: every nondegenerate mean is within 6 MC SE of theory. 
+
+Empirical counterexample test means:
+[1] 100.026858  99.206406
+Empirical counterexample test SDs:
+[1] 15.098776 14.958307
+Empirical counterexample correlation matrix:
+         [,1]     [,2]
+[1,] 1.000000 0.592572
+[2,] 0.592572 1.000000
+
+INTERPRETATION
+mc_se and mc_95_* quantify simulation error, not uncertainty in rho or
+the assumptions, and not the spread of an individual person's scores.
+squared_difference has units of IQ points squared; other means use IQ points.
+The 10 pairwise gaps within a row of 5 tests are not independent replicates.
+We use one specified pair and one range per independent person.
+The simulation supports implementation/numerics; the mathematical derivation
+proves the expectations under the stated model.
+
+REPRODUCIBILITY
+R version 4.3.3 (2024-02-29)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 24.04.3 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.0 
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.0
+
+locale:
+ [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8        LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8   
+ [6] LC_MESSAGES=C.UTF-8    LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C           LC_TELEPHONE=C        
+[11] LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+
+time zone: America/New_York
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+[1] compiler_4.3.3

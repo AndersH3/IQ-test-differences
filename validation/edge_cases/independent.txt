@@ -1,0 +1,104 @@
+IQ TEST DIFFERENCES AND RANGES
+==============================
+
+People per model: 2000; tests per person: 5; seed: 20260903; batch: 100000
+Marginal mean: 100; marginal SD: 15; every pair correlation: 0
+
+MODEL ASSUMPTIONS
+The main results assume an equicorrelated JOINT normal distribution.
+Each row is one person; independent rows define the averaging population.
+Scores are continuous and unrounded. Correlation is a population parameter,
+not the exact empirical correlation in the simulated finite sample.
+
+DETERMINISTIC NUMERICAL CHECKS
+E(max of 5 independent standard normals): 1.162964473641
+Quadrature estimated absolute error: 4.21e-12
+E(max of 5), exact closed form: 1.162964473641
+Closed form minus quadrature: 0
+All deterministic checks passed.
+
+JOINT NORMAL MODEL
+            quantity      theory   simulation        mc_se     mc_95_low   mc_95_high error_in_mc_se
+   signed_difference   0.0000000   0.52186167  0.476170462  -0.411415285   1.45513863    1.095955570
+ absolute_difference  16.9256875  16.85385302  0.291165446  16.283179228  17.42452680   -0.246713652
+  squared_difference 450.0000000 453.52221833 15.000163055 424.122438981 482.92199768    0.234812003
+          test_range  34.8889342  35.04088083  0.294625929  34.463424624  35.61833704    0.515727266
+       highest_score 117.4444671 117.41246707  0.225129600 116.971221162 117.85371298   -0.142140506
+        lowest_score  82.5555329  82.37158624  0.225232122  81.930139387  82.81303308   -0.816698162
+Monte Carlo check: every nondegenerate mean is within 6 MC SE of theory. 
+
+Empirical test means:
+[1] 100.037212  99.515351  99.934997  99.796727  99.607420
+Empirical test SDs:
+[1] 14.982250 14.892399 15.129718 15.421280 14.906848
+Empirical correlation matrix:
+            [,1]         [,2]        [,3]         [,4]       [,5]
+[1,]  1.00000000 -0.016191334  0.01248606  0.002618691 -0.0321225
+[2,] -0.01619133  1.000000000 -0.03170747 -0.000547025  0.0248419
+[3,]  0.01248606 -0.031707471  1.00000000  0.005042893 -0.0107493
+[4,]  0.00261869 -0.000547025  0.00504289  1.000000000 -0.0247016
+[5,] -0.03212255  0.024841906 -0.01074933 -0.024701571  1.0000000
+
+INDIVIDUAL QUANTILES UNDER THE JOINT NORMAL MODEL
+ probability absolute_difference test_range
+       0.025          0.66477899  12.745075
+       0.500         14.30808829  33.853237
+       0.975         47.54733204  62.955400
+These are distribution quantiles, NOT confidence intervals for the mean.
+
+COUNTEREXAMPLE: NORMAL MARGINALS, SAME CORRELATIONS, NON-NORMAL JOINT LAW
+With probability rho all k scores equal one shared normal draw.
+Otherwise all k scores are independent normal draws.
+This is a non-identifiability demonstration, not a realistic test model.
+            quantity      theory   simulation        mc_se    mc_95_low    mc_95_high error_in_mc_se
+   signed_difference   0.0000000  -0.70534097  0.470287447  -1.62708743   0.216405489  -1.4998082001
+ absolute_difference  16.9256875  16.93286335  0.279260655  16.38552253  17.480204177   0.0256958697
+  squared_difference 450.0000000 442.61690137 13.758841999 415.65006659 469.583736161  -0.5366075594
+          test_range  34.8889342  34.65055897  0.286795257  34.08845060  35.212667348  -0.8311686821
+       highest_score 117.4444671 117.53008478  0.222557704 117.09387969 117.966289863   0.3846987652
+        lowest_score  82.5555329  82.87952581  0.228253374  82.43215741  83.326894198   1.4194441186
+Monte Carlo check: every nondegenerate mean is within 6 MC SE of theory. 
+
+Empirical counterexample test means:
+[1]  99.757947 100.463288 100.638630 100.244964 100.152205
+Empirical counterexample test SDs:
+[1] 14.556704 15.242610 15.082586 14.494077 14.932730
+Empirical counterexample correlation matrix:
+            [,1]        [,2]        [,3]        [,4]       [,5]
+[1,]  1.00000000  0.00426851 -0.01449079 -0.00401872  0.0187191
+[2,]  0.00426851  1.00000000 -0.00557697  0.00789307 -0.0188737
+[3,] -0.01449079 -0.00557697  1.00000000  0.01453713  0.0297761
+[4,] -0.00401872  0.00789307  0.01453713  1.00000000 -0.0118524
+[5,]  0.01871912 -0.01887373  0.02977605 -0.01185238  1.0000000
+
+INTERPRETATION
+mc_se and mc_95_* quantify simulation error, not uncertainty in rho or
+the assumptions, and not the spread of an individual person's scores.
+squared_difference has units of IQ points squared; other means use IQ points.
+The 10 pairwise gaps within a row of 5 tests are not independent replicates.
+We use one specified pair and one range per independent person.
+The simulation supports implementation/numerics; the mathematical derivation
+proves the expectations under the stated model.
+
+REPRODUCIBILITY
+R version 4.3.3 (2024-02-29)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 24.04.3 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.0 
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.0
+
+locale:
+ [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8        LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8   
+ [6] LC_MESSAGES=C.UTF-8    LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C           LC_TELEPHONE=C        
+[11] LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+
+time zone: America/New_York
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+[1] compiler_4.3.3

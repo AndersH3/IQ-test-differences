@@ -1,0 +1,26 @@
+# Local TeX build products; source, PDF, figures, and saved results are tracked.
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.toc
+*.xdv
+iq_report/iq_test_differences_report.log
+
+# Local tools and editor state.
+node_modules/
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+__pycache__/
+*.pyc
+.DS_Store
+*~
+
+# Credentials and local environment configuration.
+.env
+.env.*
+!.env.example

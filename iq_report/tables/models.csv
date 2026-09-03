@@ -1,0 +1,4 @@
+"model","expected_abs","expected_range"
+"Joint Gaussian",10.7047446969166,22.0656994473774
+"Shared/independent mixture",6.77027500257308,13.9555736836862
+"Smooth Gaussian mixture",9.75670925334888,20.1115131724583

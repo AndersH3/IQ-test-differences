@@ -1,0 +1,114 @@
+IQ TEST DIFFERENCES AND RANGES
+==============================
+
+People per model: 2001; tests per person: 10; seed: 20260903; batch: 1000
+Marginal mean: 100; marginal SD: 15; every pair correlation: 0.6
+
+MODEL ASSUMPTIONS
+The main results assume an equicorrelated JOINT normal distribution.
+Each row is one person; independent rows define the averaging population.
+Scores are continuous and unrounded. Correlation is a population parameter,
+not the exact empirical correlation in the simulated finite sample.
+
+DETERMINISTIC NUMERICAL CHECKS
+E(max of 10 independent standard normals): 1.538752730835
+Quadrature estimated absolute error: 8.36e-12
+E(max of 5), exact closed form: 1.162964473641
+Closed form minus quadrature: 0
+All deterministic checks passed.
+
+JOINT NORMAL MODEL
+            quantity      theory     simulation       mc_se    mc_95_low    mc_95_high error_in_mc_se
+   signed_difference   0.0000000  -0.0763690287 0.295641923  -0.65581655   0.503078492   -0.258315966
+ absolute_difference  10.7047447  10.5399824537 0.178497752  10.19013329  10.889831619   -0.923049401
+  squared_difference 180.0000000 174.8141251333 5.591891715 163.85421877 185.774031500   -0.927391861
+          test_range  29.1957803  29.1004173543 0.171128288  28.76501207  29.435822635   -0.557260043
+       highest_score 114.5978902 114.2520161043 0.284697169 113.69401991 114.810012301   -1.214884058
+        lowest_score  85.4021098  85.1515987500 0.290376657  84.58247096  85.720726539   -0.862710857
+Monte Carlo check: every nondegenerate mean is within 6 MC SE of theory. 
+
+Empirical test means:
+ [1] 99.689551 99.765920 99.163314 99.811568 99.979880 99.637202 99.874695 99.500954 99.787468 99.747600
+Empirical test SDs:
+ [1] 14.728458 14.912015 14.999185 14.910373 14.868623 15.174884 14.975584 15.019351 14.927174 15.107797
+Empirical correlation matrix:
+          [,1]     [,2]     [,3]     [,4]     [,5]     [,6]     [,7]     [,8]     [,9]    [,10]
+ [1,] 1.000000 0.601919 0.588635 0.597344 0.584133 0.598853 0.581974 0.587298 0.571164 0.580156
+ [2,] 0.601919 1.000000 0.612061 0.614099 0.615976 0.604489 0.598881 0.610184 0.624040 0.601561
+ [3,] 0.588635 0.612061 1.000000 0.594758 0.595603 0.599174 0.606747 0.615742 0.614394 0.605776
+ [4,] 0.597344 0.614099 0.594758 1.000000 0.601310 0.579855 0.598411 0.577242 0.612869 0.597849
+ [5,] 0.584133 0.615976 0.595603 0.601310 1.000000 0.597153 0.597593 0.605129 0.608629 0.595594
+ [6,] 0.598853 0.604489 0.599174 0.579855 0.597153 1.000000 0.596200 0.594025 0.593730 0.606336
+ [7,] 0.581974 0.598881 0.606747 0.598411 0.597593 0.596200 1.000000 0.591086 0.603850 0.609845
+ [8,] 0.587298 0.610184 0.615742 0.577242 0.605129 0.594025 0.591086 1.000000 0.600569 0.591132
+ [9,] 0.571164 0.624040 0.614394 0.612869 0.608629 0.593730 0.603850 0.600569 1.000000 0.602308
+[10,] 0.580156 0.601561 0.605776 0.597849 0.595594 0.606336 0.609845 0.591132 0.602308 1.000000
+
+INDIVIDUAL QUANTILES UNDER THE JOINT NORMAL MODEL
+ probability absolute_difference test_range
+       0.025          0.42044315  15.876380
+       0.500          9.04922959  28.690095
+       0.975         30.07157318  45.385326
+These are distribution quantiles, NOT confidence intervals for the mean.
+
+COUNTEREXAMPLE: NORMAL MARGINALS, SAME CORRELATIONS, NON-NORMAL JOINT LAW
+With probability rho all k scores equal one shared normal draw.
+Otherwise all k scores are independent normal draws.
+This is a non-identifiability demonstration, not a realistic test model.
+            quantity      theory    simulation        mc_se     mc_95_low    mc_95_high error_in_mc_se
+   signed_difference   0.0000000   0.078318757  0.308728423  -0.526777833   0.683415347    0.253681719
+ absolute_difference   6.7702750   6.901919179  0.267391215   6.377842028   7.425996330    0.492327980
+  squared_difference 180.0000000 190.632612010 11.040588945 168.993455310 212.271768711    0.963047539
+          test_range  18.4650328  18.333932366  0.532140863  17.290955440  19.376909291   -0.246364100
+       highest_score 109.2325164 109.314473925  0.383721909 108.562392803 110.066555047    0.213585771
+        lowest_score  90.7674836  90.980541559  0.382843782  90.230181534  91.730901584    0.556514052
+Monte Carlo check: every nondegenerate mean is within 6 MC SE of theory. 
+
+Empirical counterexample test means:
+ [1] 100.038139  99.959820 100.095742 100.146747 100.255532  99.707845 100.287646 100.113213  99.975805 100.292624
+Empirical counterexample test SDs:
+ [1] 14.933923 15.172590 15.060130 15.013525 14.747346 15.168152 15.023119 14.916904 14.857001 14.939472
+Empirical counterexample correlation matrix:
+          [,1]     [,2]     [,3]     [,4]     [,5]     [,6]     [,7]     [,8]     [,9]    [,10]
+ [1,] 1.000000 0.579267 0.574946 0.601178 0.608572 0.630611 0.624317 0.616912 0.617798 0.626359
+ [2,] 0.579267 1.000000 0.580360 0.606064 0.622747 0.621211 0.578927 0.603804 0.598047 0.579393
+ [3,] 0.574946 0.580360 1.000000 0.594003 0.622535 0.584258 0.591613 0.621972 0.571911 0.604954
+ [4,] 0.601178 0.606064 0.594003 1.000000 0.616308 0.598120 0.604371 0.591946 0.600374 0.597856
+ [5,] 0.608572 0.622747 0.622535 0.616308 1.000000 0.588348 0.618845 0.637578 0.627427 0.618256
+ [6,] 0.630611 0.621211 0.584258 0.598120 0.588348 1.000000 0.595264 0.612973 0.600882 0.567049
+ [7,] 0.624317 0.578927 0.591613 0.604371 0.618845 0.595264 1.000000 0.618383 0.607284 0.628443
+ [8,] 0.616912 0.603804 0.621972 0.591946 0.637578 0.612973 0.618383 1.000000 0.636555 0.579936
+ [9,] 0.617798 0.598047 0.571911 0.600374 0.627427 0.600882 0.607284 0.636555 1.000000 0.608818
+[10,] 0.626359 0.579393 0.604954 0.597856 0.618256 0.567049 0.628443 0.579936 0.608818 1.000000
+
+INTERPRETATION
+mc_se and mc_95_* quantify simulation error, not uncertainty in rho or
+the assumptions, and not the spread of an individual person's scores.
+squared_difference has units of IQ points squared; other means use IQ points.
+The 10 pairwise gaps within a row of 5 tests are not independent replicates.
+We use one specified pair and one range per independent person.
+The simulation supports implementation/numerics; the mathematical derivation
+proves the expectations under the stated model.
+
+REPRODUCIBILITY
+R version 4.3.3 (2024-02-29)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 24.04.3 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.0 
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.0
+
+locale:
+ [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8        LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8   
+ [6] LC_MESSAGES=C.UTF-8    LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C           LC_TELEPHONE=C        
+[11] LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+
+time zone: America/New_York
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+[1] compiler_4.3.3

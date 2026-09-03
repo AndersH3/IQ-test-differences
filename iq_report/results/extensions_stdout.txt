@@ -1,0 +1,59 @@
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+REPORT EXTENSIONS: 2026-09-03
+No empirical IQ data used.
+
+Range CDF quadrature checks:
+    w         integral           ptukey              error
+1 0.5 0.00334031605655 0.00334031605557  9.79809115786e-13
+2 1.0 0.04504514481136 0.04504514480708  4.27792523627e-12
+3 2.0 0.38155051944901 0.38155051944801  1.00180974627e-12
+4 3.0 0.78912349503646 0.78912349503648 -1.78745906965e-14
+5 4.0 0.96230393177946 0.96230393177990 -4.42645919918e-13
+6 6.0 0.99978575738567 0.99978575738567  2.22044604925e-16
+Range quantiles from independent CDF inversion (IQ points):
+  probability       quantile
+1       0.025  8.06069323724
+2       0.500 21.41066726797
+3       0.950 36.59693352329
+4       0.975 39.81648795924
+
+Smooth mixture: n=1000000, seed=20260904
+ quantity       theory    simulated          mc_se          z_mc
+      abs  9.756709253  9.760979035 0.009217621315  0.4632194567
+    range 20.111513172 20.103200350 0.012223299189 -0.6800800825
+
+Average-correlation block model: average rho = 0.6 ; expected range = 13.81977 
+
+Projection covariance checks passed at rho=-.25,-.1,0,.6,1.
+Exact iid normal range second moment = 6.15658306873 
+Gaussian five-test range population SD = 8.19740105668 
+Theoretical range MC SE at n=5000000 = 0.00366598920031 
+
+All deterministic checks passed.
+
+R version 4.3.3 (2024-02-29)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 24.04.3 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.0 
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.0
+
+locale:
+ [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8        LC_COLLATE=C.UTF-8    
+ [5] LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8    LC_PAPER=C.UTF-8       LC_NAME=C             
+ [9] LC_ADDRESS=C           LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+
+time zone: America/New_York
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+[1] compiler_4.3.3 
